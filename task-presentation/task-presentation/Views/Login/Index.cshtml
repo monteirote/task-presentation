@@ -1,0 +1,102 @@
+﻿@model task_presentation.Models.LoginModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<style>
+    body {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-color: lightgray;
+    }
+
+    .mainDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .loginCard {
+        margin-top: 8rem;
+        background-color: #808080;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column
+    }
+
+        .loginCard > div > h1, .loginCard > div > h2 {
+            margin: 0;
+            padding: 0
+        }
+
+    .divInputs {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: .8rem
+    }
+
+    .input {
+        font-size: 1.5rem;
+    }
+
+    img {
+        height: 15rem;
+        margin: 1rem
+    }
+</style>
+
+<div class="mainDiv">
+    <div class="loginCard">
+        <div>
+            <h1 style="text-align: center">Framed Art - Login</h1>
+            <h2 style="text-align: center">Sistema de Visualização de OS</h2>
+        </div>
+
+        <img src="@Url.Content("~/Content/images/logo-framed-art.svg")" alt="Logo" />
+
+        @using (Html.BeginForm("Action", "Controller", FormMethod.Post, new { id = "formularioLogin" }))
+        {
+            <div class="divInputs" style="">
+                @Html.LabelFor(model => model.Usuario,
+                     new { @style = "font-size: 1.8rem", @class = "form-control" })
+
+                @Html.TextBoxFor(model => model.Usuario,
+                     new { @id = "txtEmail", @class = "input form-control" })
+            </div>
+
+            <div class="divInputs">
+                @Html.LabelFor(model => model.Senha,
+                     new { @style = "font-size: 1.8rem", @class = "form-control" })
+
+                @Html.TextBoxFor(model => model.Senha,
+                     new { @id = "txtSenha", @class = "input form-control" })
+            </div>
+
+            <input style="width: 100%; height: 2.5rem; margin-top: 1rem; background-color: black; color: white; font-size: 1.8rem" type="submit" value="Entrar" />
+
+            <div style="display: flex; justify-content: end; width: 100%; margin-top: .5rem">
+                <a href="http://google.com" style="color: black">Esqueceu a senha?</a>
+            </div>
+
+            <div style="display: flex; justify-content: end; width: 100%; margin-top: .5rem">
+                <a href="http://google.com" style="color: black">Registrar-se</a>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script><script>
+
+    $(function () {
+        $('#formularioLogin').submit(function () {
+            
+        });
+    });
+
+</script>
