@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1c54dbddd5ca4480863c4cb56f2a69f6" Name="Diagram1">
+        <EntityTypeShape EntityType="TASK_PRESENTATIONModel.USUARIO" Width="1.5" PointX="1" PointY="0.5" />
+        <EntityTypeShape EntityType="TASK_PRESENTATIONModel.CLIENTE" Width="1.5" PointX="3.375" PointY="0.5" />
+        <EntityTypeShape EntityType="TASK_PRESENTATIONModel.ORDEM_SERVICO" Width="1.5" PointX="5.5" PointY="0.5" />
+        <EntityTypeShape EntityType="TASK_PRESENTATIONModel.TIPO_FUNDO" Width="1.75" PointX="10.75" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="TASK_PRESENTATIONModel.TIPO_IMPRESSAO" Width="1.75" PointX="10.75" PointY="1" IsExpanded="false" />
+        <EntityTypeShape EntityType="TASK_PRESENTATIONModel.TIPO_MOLDURA" Width="1.75" PointX="10.75" PointY="1.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="TASK_PRESENTATIONModel.TIPO_VIDRO" Width="1.75" PointX="10.75" PointY="2" IsExpanded="false" />
+        <AssociationConnector Association="TASK_PRESENTATIONModel.FK__ORDEM_SER__CD_CL__571DF1D5" />
+        <EntityTypeShape EntityType="TASK_PRESENTATIONModel.QUADRO_OS" Width="1.5" PointX="7.875" PointY="0.5" />
+        <AssociationConnector Association="TASK_PRESENTATIONModel.FK__QUADRO_OS__CD_OS__7B5B524B" />
+        <AssociationConnector Association="TASK_PRESENTATIONModel.FK__QUADRO_OS__CD_FU__7F2BE32F" />
+        <AssociationConnector Association="TASK_PRESENTATIONModel.FK__QUADRO_OS__CD_IM__7E37BEF6" />
+        <AssociationConnector Association="TASK_PRESENTATIONModel.FK__QUADRO_OS__CD_MO__7C4F7684" />
+        <AssociationConnector Association="TASK_PRESENTATIONModel.FK__QUADRO_OS__CD_VI__7D439ABD" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

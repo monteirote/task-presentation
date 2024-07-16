@@ -60,13 +60,13 @@
 
         <img src="@Url.Content("~/Content/images/logo-framed-art.svg")" alt="Logo" />
 
-        @using (Html.BeginForm("Action", "Controller", FormMethod.Post, new { id = "formularioLogin" }))
-        {
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { id = "formularioLogin" }))
+         {
             <div class="divInputs" style="">
-                @Html.LabelFor(model => model.Usuario,
+                @Html.LabelFor(model => model.DS_NOME,
                      new { @style = "font-size: 1.8rem", @class = "form-control" })
 
-                @Html.TextBoxFor(model => model.Usuario,
+                @Html.TextBoxFor(model => model.DS_NOME,
                      new { @id = "txtEmail", @class = "input form-control" })
             </div>
 
@@ -75,10 +75,14 @@
                      new { @style = "font-size: 1.8rem", @class = "form-control" })
 
                 @Html.TextBoxFor(model => model.Senha,
-                     new { @id = "txtSenha", @class = "input form-control" })
+                     new { @id = "txtSenha", @class = "input form-control", @type = "password" })
             </div>
 
-            <input style="width: 100%; height: 2.5rem; margin-top: 1rem; background-color: black; color: white; font-size: 1.8rem" type="submit" value="Entrar" />
+            <button style="width: 100%; height: 2.5rem; margin-top: 1rem; background-color: black; color: white; font-size: 1.8rem">Entrar</button>
+
+             if (ViewBag.Erro != null) { 
+                <div style="color: red">@ViewBag.Erro</div>
+             }
 
             <div style="display: flex; justify-content: end; width: 100%; margin-top: .5rem">
                 <a href="http://google.com" style="color: black">Esqueceu a senha?</a>
@@ -87,16 +91,8 @@
             <div style="display: flex; justify-content: end; width: 100%; margin-top: .5rem">
                 <a href="http://google.com" style="color: black">Registrar-se</a>
             </div>
-        }
+         }
     </div>
 </div>
 
-<script src="~/Scripts/jquery-3.4.1.min.js"></script><script>
-
-    $(function () {
-        $('#formularioLogin').submit(function () {
-            
-        });
-    });
-
-</script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>

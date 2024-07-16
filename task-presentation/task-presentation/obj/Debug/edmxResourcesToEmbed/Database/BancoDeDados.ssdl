@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TASK_PRESENTATIONModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="CD_CLIENTE" />
+    </Key>
+    <Property Name="CD_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_CLIENTE" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORDEM_SERVICO">
+    <Key>
+      <PropertyRef Name="CD_OS" />
+    </Key>
+    <Property Name="CD_OS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_OS" Type="int" />
+    <Property Name="CD_CLIENTE" Type="int" />
+    <Property Name="DT_CRIACAO" Type="datetime" />
+    <Property Name="DT_ENTREGA" Type="datetime" />
+    <Property Name="DS_OBSERVACAO" Type="varchar(max)" />
+    <Property Name="IC_CANCELAMENTO" Type="int" />
+  </EntityType>
+  <EntityType Name="QUADRO_OS">
+    <Key>
+      <PropertyRef Name="CD_QUADRO" />
+    </Key>
+    <Property Name="CD_QUADRO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CD_OS" Type="int" />
+    <Property Name="VL_ALTURA" Type="int" Nullable="false" />
+    <Property Name="VL_LARGURA" Type="int" Nullable="false" />
+    <Property Name="CD_MOLDURA" Type="int" />
+    <Property Name="CD_VIDRO" Type="int" />
+    <Property Name="CD_IMPRESSAO" Type="int" />
+    <Property Name="CD_FUNDO" Type="int" />
+  </EntityType>
+  <EntityType Name="TIPO_FUNDO">
+    <Key>
+      <PropertyRef Name="CD_FUNDO" />
+    </Key>
+    <Property Name="CD_FUNDO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_FUNDO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TIPO_IMPRESSAO">
+    <Key>
+      <PropertyRef Name="CD_IMPRESSAO" />
+    </Key>
+    <Property Name="CD_IMPRESSAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_IMPRESSAO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TIPO_MOLDURA">
+    <Key>
+      <PropertyRef Name="CD_MOLDURA" />
+    </Key>
+    <Property Name="CD_MOLDURA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_MOLDURA" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TIPO_VIDRO">
+    <Key>
+      <PropertyRef Name="CD_VIDRO" />
+    </Key>
+    <Property Name="CD_VIDRO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_VIDRO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="CD_USUARIO" />
+    </Key>
+    <Property Name="CD_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_NOME" Type="varchar" MaxLength="100" />
+    <Property Name="DS_SENHA_CRIPTOGRAFADA" Type="varchar(max)" />
+    <Property Name="CD_CARGO" Type="int" />
+  </EntityType>
+  <Association Name="FK__ORDEM_SER__CD_CL__787EE5A0">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+    <End Role="ORDEM_SERVICO" Type="Self.ORDEM_SERVICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Principal>
+      <Dependent Role="ORDEM_SERVICO">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QUADRO_OS__CD_FU__7F2BE32F">
+    <End Role="TIPO_FUNDO" Type="Self.TIPO_FUNDO" Multiplicity="0..1" />
+    <End Role="QUADRO_OS" Type="Self.QUADRO_OS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_FUNDO">
+        <PropertyRef Name="CD_FUNDO" />
+      </Principal>
+      <Dependent Role="QUADRO_OS">
+        <PropertyRef Name="CD_FUNDO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QUADRO_OS__CD_IM__7E37BEF6">
+    <End Role="TIPO_IMPRESSAO" Type="Self.TIPO_IMPRESSAO" Multiplicity="0..1" />
+    <End Role="QUADRO_OS" Type="Self.QUADRO_OS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_IMPRESSAO">
+        <PropertyRef Name="CD_IMPRESSAO" />
+      </Principal>
+      <Dependent Role="QUADRO_OS">
+        <PropertyRef Name="CD_IMPRESSAO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QUADRO_OS__CD_MO__7C4F7684">
+    <End Role="TIPO_MOLDURA" Type="Self.TIPO_MOLDURA" Multiplicity="0..1" />
+    <End Role="QUADRO_OS" Type="Self.QUADRO_OS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_MOLDURA">
+        <PropertyRef Name="CD_MOLDURA" />
+      </Principal>
+      <Dependent Role="QUADRO_OS">
+        <PropertyRef Name="CD_MOLDURA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QUADRO_OS__CD_OS__7B5B524B">
+    <End Role="ORDEM_SERVICO" Type="Self.ORDEM_SERVICO" Multiplicity="0..1" />
+    <End Role="QUADRO_OS" Type="Self.QUADRO_OS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORDEM_SERVICO">
+        <PropertyRef Name="CD_OS" />
+      </Principal>
+      <Dependent Role="QUADRO_OS">
+        <PropertyRef Name="CD_OS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QUADRO_OS__CD_VI__7D439ABD">
+    <End Role="TIPO_VIDRO" Type="Self.TIPO_VIDRO" Multiplicity="0..1" />
+    <End Role="QUADRO_OS" Type="Self.QUADRO_OS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_VIDRO">
+        <PropertyRef Name="CD_VIDRO" />
+      </Principal>
+      <Dependent Role="QUADRO_OS">
+        <PropertyRef Name="CD_VIDRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TASK_PRESENTATIONModelStoreContainer">
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDEM_SERVICO" EntityType="Self.ORDEM_SERVICO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUADRO_OS" EntityType="Self.QUADRO_OS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_FUNDO" EntityType="Self.TIPO_FUNDO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_IMPRESSAO" EntityType="Self.TIPO_IMPRESSAO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_MOLDURA" EntityType="Self.TIPO_MOLDURA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_VIDRO" EntityType="Self.TIPO_VIDRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ORDEM_SER__CD_CL__787EE5A0" Association="Self.FK__ORDEM_SER__CD_CL__787EE5A0">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="ORDEM_SERVICO" EntitySet="ORDEM_SERVICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QUADRO_OS__CD_FU__7F2BE32F" Association="Self.FK__QUADRO_OS__CD_FU__7F2BE32F">
+      <End Role="TIPO_FUNDO" EntitySet="TIPO_FUNDO" />
+      <End Role="QUADRO_OS" EntitySet="QUADRO_OS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QUADRO_OS__CD_IM__7E37BEF6" Association="Self.FK__QUADRO_OS__CD_IM__7E37BEF6">
+      <End Role="TIPO_IMPRESSAO" EntitySet="TIPO_IMPRESSAO" />
+      <End Role="QUADRO_OS" EntitySet="QUADRO_OS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QUADRO_OS__CD_MO__7C4F7684" Association="Self.FK__QUADRO_OS__CD_MO__7C4F7684">
+      <End Role="TIPO_MOLDURA" EntitySet="TIPO_MOLDURA" />
+      <End Role="QUADRO_OS" EntitySet="QUADRO_OS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QUADRO_OS__CD_OS__7B5B524B" Association="Self.FK__QUADRO_OS__CD_OS__7B5B524B">
+      <End Role="ORDEM_SERVICO" EntitySet="ORDEM_SERVICO" />
+      <End Role="QUADRO_OS" EntitySet="QUADRO_OS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QUADRO_OS__CD_VI__7D439ABD" Association="Self.FK__QUADRO_OS__CD_VI__7D439ABD">
+      <End Role="TIPO_VIDRO" EntitySet="TIPO_VIDRO" />
+      <End Role="QUADRO_OS" EntitySet="QUADRO_OS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

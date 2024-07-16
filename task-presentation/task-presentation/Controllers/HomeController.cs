@@ -10,16 +10,6 @@ namespace task_presentation.Controllers
 {
     public class HomeController : Controller
     {
-        public void ConnectToDatabase()
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings["ConexaoBanco"]
-                                            .ConnectionString.Replace("--password--", Environment.GetEnvironmentVariable("DB_PASSWORD"));
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-            }
-        }
 
         public ActionResult Index()
         {

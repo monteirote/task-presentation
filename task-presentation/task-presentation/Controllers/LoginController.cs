@@ -12,5 +12,16 @@ namespace task_presentation.Controllers
         {
             return View();
         }
+
+        public ActionResult Login(Models.LoginModel user) {
+
+            var senhaValida = user.VerificarSenha();
+
+            if (senhaValida) return RedirectToAction("Index", "Home");
+
+            ViewBag.Erro = "Login inválido";
+
+            return View("Index");
+        }
     }
 }

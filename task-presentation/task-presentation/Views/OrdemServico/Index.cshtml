@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    List<task_presentation.Models.OrdemServicoDTO> ListaOS = ViewBag.ListaOS;
+}
+
+@Html.ActionLink("Início", "AdicionarNovaOrdemServico", "OrdemServico")
+
+Lista de OS
+
+<table>
+    <thead>
+        <tr>
+            <th>Número OS</th>
+            <th>Cliente</th>
+            <th>Data de Entrega</th>
+            <th>Detalhes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var os in ListaOS) {
+            <tr>
+                <td>@os.DS_OS</td>
+                <td>@os.NM_CLIENTE</td>
+                <td>@os.DT_ENTREGA.ToString().Split(' ')[0]</td>
+                <td><button>x</button></td>
+            </tr>
+        }
+    </tbody>
+</table>

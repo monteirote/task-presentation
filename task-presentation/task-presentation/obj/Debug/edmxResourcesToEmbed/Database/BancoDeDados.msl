@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TASK_PRESENTATIONModelStoreContainer" CdmEntityContainer="TASK_PRESENTATIONEntities">
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="TASK_PRESENTATIONModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="CD_CARGO" ColumnName="CD_CARGO" />
+          <ScalarProperty Name="DS_SENHA_CRIPTOGRAFADA" ColumnName="DS_SENHA_CRIPTOGRAFADA" />
+          <ScalarProperty Name="DS_NOME" ColumnName="DS_NOME" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="TASK_PRESENTATIONModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="NM_CLIENTE" ColumnName="NM_CLIENTE" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDEM_SERVICO">
+      <EntityTypeMapping TypeName="TASK_PRESENTATIONModel.ORDEM_SERVICO">
+        <MappingFragment StoreEntitySet="ORDEM_SERVICO">
+          <ScalarProperty Name="DS_OBSERVACAO" ColumnName="DS_OBSERVACAO" />
+          <ScalarProperty Name="DS_OS" ColumnName="DS_OS" />
+          <ScalarProperty Name="IC_CANCELAMENTO" ColumnName="IC_CANCELAMENTO" />
+          <ScalarProperty Name="DT_ENTREGA" ColumnName="DT_ENTREGA" />
+          <ScalarProperty Name="DT_CRIACAO" ColumnName="DT_CRIACAO" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="CD_OS" ColumnName="CD_OS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_FUNDO">
+      <EntityTypeMapping TypeName="TASK_PRESENTATIONModel.TIPO_FUNDO">
+        <MappingFragment StoreEntitySet="TIPO_FUNDO">
+          <ScalarProperty Name="DS_FUNDO" ColumnName="DS_FUNDO" />
+          <ScalarProperty Name="CD_FUNDO" ColumnName="CD_FUNDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_IMPRESSAO">
+      <EntityTypeMapping TypeName="TASK_PRESENTATIONModel.TIPO_IMPRESSAO">
+        <MappingFragment StoreEntitySet="TIPO_IMPRESSAO">
+          <ScalarProperty Name="DS_IMPRESSAO" ColumnName="DS_IMPRESSAO" />
+          <ScalarProperty Name="CD_IMPRESSAO" ColumnName="CD_IMPRESSAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_MOLDURA">
+      <EntityTypeMapping TypeName="TASK_PRESENTATIONModel.TIPO_MOLDURA">
+        <MappingFragment StoreEntitySet="TIPO_MOLDURA">
+          <ScalarProperty Name="DS_MOLDURA" ColumnName="DS_MOLDURA" />
+          <ScalarProperty Name="CD_MOLDURA" ColumnName="CD_MOLDURA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_VIDRO">
+      <EntityTypeMapping TypeName="TASK_PRESENTATIONModel.TIPO_VIDRO">
+        <MappingFragment StoreEntitySet="TIPO_VIDRO">
+          <ScalarProperty Name="DS_VIDRO" ColumnName="DS_VIDRO" />
+          <ScalarProperty Name="CD_VIDRO" ColumnName="CD_VIDRO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUADRO_OS">
+      <EntityTypeMapping TypeName="TASK_PRESENTATIONModel.QUADRO_OS">
+        <MappingFragment StoreEntitySet="QUADRO_OS">
+          <ScalarProperty Name="CD_FUNDO" ColumnName="CD_FUNDO" />
+          <ScalarProperty Name="CD_IMPRESSAO" ColumnName="CD_IMPRESSAO" />
+          <ScalarProperty Name="CD_VIDRO" ColumnName="CD_VIDRO" />
+          <ScalarProperty Name="CD_MOLDURA" ColumnName="CD_MOLDURA" />
+          <ScalarProperty Name="VL_LARGURA" ColumnName="VL_LARGURA" />
+          <ScalarProperty Name="VL_ALTURA" ColumnName="VL_ALTURA" />
+          <ScalarProperty Name="CD_OS" ColumnName="CD_OS" />
+          <ScalarProperty Name="CD_QUADRO" ColumnName="CD_QUADRO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
