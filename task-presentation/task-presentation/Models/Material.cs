@@ -64,5 +64,39 @@ namespace task_presentation.Models {
                 return list;
             }
         }
+
+        public static bool AdicionarMaterial(string TipoMaterial, string NomeMaterial) {
+            try {
+                using (var banco = new TASK_PRESENTATIONEntities()) {
+                    switch (TipoMaterial) {
+                        case "Fundo":
+                            banco.TIPO_FUNDO.Add(new TIPO_FUNDO() { DS_FUNDO = NomeMaterial });
+                            banco.SaveChanges();
+                            return true;
+                        case "Impressao":
+                            banco.TIPO_IMPRESSAO.Add(new TIPO_IMPRESSAO() { DS_IMPRESSAO = NomeMaterial });
+                            banco.SaveChanges();
+                            return true;
+                        case "Moldura":
+                            banco.TIPO_MOLDURA.Add(new TIPO_MOLDURA() { DS_MOLDURA = NomeMaterial });
+                            banco.SaveChanges();
+                            return true;
+                        case "Vidro":
+                            banco.TIPO_VIDRO.Add(new TIPO_VIDRO() { DS_VIDRO = NomeMaterial });
+                            banco.SaveChanges();
+                            return true;
+                    }
+                }
+                return false;
+            } catch {
+                return false;
+            }
+            
+        }
+        public static bool EditarMaterial(int id, string TipoMaterial, string NovoNomeMaterial) {
+            using (var banco = new TASK_PRESENTATIONEntities()) {
+                
+            }
+        }
     }
 }

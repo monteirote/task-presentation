@@ -1,0 +1,142 @@
+﻿@model task_presentation.Models.Material.PaginaInfo
+
+@{
+    ViewBag.Title = "PaginaMaterial";
+    var Titulo = Model.TituloPagina.Equals("Impressao") ? "Impressão" : Model.TituloPagina;
+}
+
+<style>
+    #ModalAdicaoLabel {
+        font-size: 2.5rem;
+        display: inline;
+        text-align: center;
+        font-weight: bold;
+        margin-left: 2rem
+    }
+
+    .modal-body {
+        font-size: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center
+    }
+
+    #inputAdicionarMaterial {
+        margin-left: 1.5rem
+    }
+</style>
+
+<div class="modal fade" id="ModalAdicao" tabindex="-1" role="dialog" aria-labelledby="ModalAdicaoLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title" id="ModalAdicaoLabel">Adicione um novo tipo de @Titulo</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: row">
+                    <label for="inputAdicionarMaterial">Nome: </label><input id="inputAdicionarMaterial" type="text" /> <br />
+                </div>
+                <div class="divErro">O nome deve possuir ao menos 4 caracteres.</div>
+            </div>
+            <div class="modal-footer">
+                <button id="botao-fechar" type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" onclick="AdicionarMaterial('@Model.TituloPagina')">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="width: 100%; align-items: center; display: flex; flex-direction: column">
+
+    <div style="display: flex; flex-direction: row; width: 60%; justify-content: center; align-items: center; margin: 2rem 0">
+        <p style="font-size: 2.5rem; font-weight: bold; margin: 0; text-align: center" class="col-lg-11">Tipos de @Titulo</p>
+        <button type="button" class="btn" data-toggle="modal" data-target="#ModalAdicao" style="margin-left: 2rem">
+            <i class="fa-solid fa-plus thick"></i>
+        </button>
+    </div>
+
+
+
+    <div style="width: 70%;display: flex; flex-direction: row; justify-content: center" id="tabelaItens"></div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        CarregarListaItens();
+    });
+
+    function CarregarListaItens() {
+
+        var TipoItem = '@Model.TituloPagina';
+
+        $.ajax({
+            url: '@Url.Action("CarregarListaItens", "Material")',
+            data: { tipoMaterial: TipoItem },
+            type: "GET",
+            success: function (data) {
+                $('#tabelaItens').html(data);
+            },
+            error: function(error) {
+                $('#tabelaItens').html('erro: ' + error);
+            }
+        });
+    }
+
+    function AdicionarMaterial(TipoMaterial) {
+        var nomeMaterial = $('#inputAdicionarMaterial').val();
+
+        if (nomeMaterial.length < 4) {
+            ExibirErro('O nome do material deve possuir mais de 4 caracteres.');
+            return;
+        }
+
+        $.ajax({
+            url: '@Url.Action("AdicionarMaterial", "Material")',
+            data: {
+                TipoMaterial: TipoMaterial,
+                NomeMaterial: nomeMaterial
+            },
+            type: "POST",
+            success: function (response) {
+                ExibirSucesso('Material adicionado com sucesso!');
+                CarregarListaItens();
+                $('#botao-fechar').click();
+                $('#inputAdicionarMaterial').val(' ');
+            },
+            error: function (xhr, status, error) {
+                ExibirErro("Erro: " + error);
+            }
+        });
+    }
+
+    function ExibirErro(erro) {
+        toastr.options = {
+            "debug": false,
+            "newestOnTop": false,
+            "positionClass": "toast-top-center",
+            "closeButton": true,
+            "debug": false,
+            "toastClass": "animated fadeInDown",
+        };
+        toastr.error(erro);
+    };
+    function ExibirSucesso(msg) {
+        toastr.options = {
+            "debug": false,
+            "newestOnTop": false,
+            "positionClass": "toast-top-center",
+            "closeButton": true,
+            "debug": false,
+            "toastClass": "animated fadeInDown",
+        };
+        toastr.success(msg);
+    };
+
+</script>

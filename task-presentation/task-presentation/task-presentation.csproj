@@ -202,6 +202,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\logo-framed-art.svg" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Database\BancoDeDados.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BancoDeDados.edmx</DependentUpon>
@@ -225,6 +227,8 @@
     <Content Include="Database\BancoDeDados.edmx.diagram">
       <DependentUpon>BancoDeDados.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -236,6 +240,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -253,6 +259,7 @@
     <Content Include="Views\OrdemServico\NovaOrdemServico.cshtml" />
     <Content Include="Views\Material\Index.cshtml" />
     <Content Include="Views\Material\ListaMateriais.cshtml" />
+    <Content Include="Views\Material\PaginaMaterial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

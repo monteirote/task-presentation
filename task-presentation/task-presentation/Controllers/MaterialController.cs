@@ -16,32 +16,33 @@ namespace task_presentation.Controllers
             return View();
         }
 
-        public ActionResult CarregarListaFundo() {
-            var comboMateriais = Material.BuscarFundos();
-            var info = new PaginaInfo() { TituloPagina = "Fundo", ComboMateriais = comboMateriais };
-
-            return View("ListaMateriais", info);
+        public ActionResult CarregarPagina(string material) {
+            return View("PaginaMaterial", new PaginaInfo { TituloPagina = material });
         }
 
-        public ActionResult CarregarListaMoldura() {
-            var comboMateriais = Material.BuscarMolduras();
-            var info = new PaginaInfo() { TituloPagina = "Tipos de Moldura", ComboMateriais = comboMateriais };
+    
 
-            return View("ListaMateriais", info);
+        [HttpPost]
+        public void AdicionarMaterial(string TipoMaterial, string NomeMaterial) {
+            Material.AdicionarMaterial(TipoMaterial, NomeMaterial);
         }
 
-        public ActionResult CarregarListaImpressao() {
-            var comboMateriais = Material.BuscarImpressao();
-            var info = new PaginaInfo() { TituloPagina = "Tipos de Impressão", ComboMateriais = comboMateriais };
+        public ActionResult CarregarListaItens(string tipoMaterial) {
+            var itens = new List<MaterialCombo>();
 
-            return View("ListaMateriais", info);
+            switch (tipoMaterial) {
+                case "Fundo": itens = Material.BuscarFundos(); break;
+                case "Moldura": itens = Material.BuscarMolduras(); break;
+                case "Impressao": itens = Material.BuscarImpressao(); break;
+                case "Vidro": itens = Material.BuscarVidro(); break;
+            }
+
+            return PartialView("ListaMateriais", new PaginaInfo() { TituloPagina = tipoMaterial, ComboMateriais = itens });
         }
 
-        public ActionResult CarregarListaVidro() {
-            var comboMateriais = Material.BuscarVidro();
-            var info = new PaginaInfo() { TituloPagina = "Tipos de Vidro", ComboMateriais = comboMateriais };
-
-            return View("ListaMateriais", info);
+        [HttpPost]
+        public void EditarMaterial(string tipoMaterial, int id, string novoNome) {
+            Material.ed
         }
     }
 }
