@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MaterialController.cs" />
     <Compile Include="Controllers\OrdemServicoController.cs" />
     <Compile Include="Database\BancoDeDados.Context.cs">
       <AutoGen>True</AutoGen>
@@ -191,6 +192,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Material.cs" />
     <Compile Include="Models\OrdemServico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -249,6 +251,8 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\OrdemServico\Index.cshtml" />
     <Content Include="Views\OrdemServico\NovaOrdemServico.cshtml" />
+    <Content Include="Views\Material\Index.cshtml" />
+    <Content Include="Views\Material\ListaMateriais.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

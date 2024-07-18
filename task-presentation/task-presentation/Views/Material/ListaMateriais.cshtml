@@ -1,0 +1,134 @@
+﻿@model task_presentation.Models.Material.PaginaInfo
+
+@{
+    ViewBag.Title = "ListaMateriais";
+    var ListaMateriais = Model.ComboMateriais;
+    int contador = 1;
+}
+
+<style>
+    .apertar:hover {
+        cursor: pointer
+    }
+
+    .tabela {
+        border-collapse: collapse;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        width: 70%
+    }
+
+        .tabela thead tr {
+            background-color: lightgray;
+            color: gray;
+            text-align: left;
+        }
+
+        .tabela th,
+        .tabela td {
+            padding: 12px 15px;
+        }
+
+        .tabela tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .tabela tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .tabela tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+            }
+
+    .btn-icon {
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+        .btn-icon:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+    .thick {
+        font-weight: bold;
+        font-size: 24px; /* Ajuste o tamanho conforme necessário */
+    }
+
+</style>
+
+<div class="modal fade" id="meuModal" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="meuModalLabel">Título do Modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Conteúdo do modal aqui...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar mudanças</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="width: 100%; align-items: center; display: flex; flex-direction: column">
+
+    <div style="display: flex; flex-direction: row; width: 60%; justify-content: center; align-items: center; margin: 2rem 0">
+        <p style="font-size: 2.5rem; font-weight: bold; margin: 0; text-align: center" class="col-lg-11">Tipos de @Model.TituloPagina</p>
+        <button type="button" class="btn" data-toggle="modal" data-target="#meuModal" style="margin-left: 2rem">
+            <i class="fa-solid fa-plus thick"></i>
+        </button>
+    </div>
+
+    
+
+    <table class="tabela col-lg-6 col-sm-12">
+        <thead>
+            <tr>
+                <th class="col-lg-1" style="text-align: center">&nbsp;</th>
+                <th class="col-lg-7" style="text-align: center">Nome</th>
+                <th class="col-lg-2" style="text-align: center">Editar</th>
+                <th class="col-lg-2" style="text-align: center">Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var registro in ListaMateriais) {
+                <tr>
+                    <td style="text-align: center">@contador</td>
+                    <td style="text-align: center" id="@registro.ID">@registro.DS_NOME</td>
+                    <td style="text-align: center" class="apertar" onclick="editarRegistro(@registro.ID, @registro.DS_NOME)"><i class="fa-solid fa-pen-to-square"></i></td>
+                    <td style="text-align: center" class="apertar" onclick="excluirRegistro(@registro.ID)"><i class="fa-solid fa-trash"></i></td>
+                </tr>
+                contador++;
+             }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function editarRegistro() { }
+
+    $(document).ready(function () {
+        $('#meuModal').on('show.bs.modal', function (e) {
+            console.log("O modal está sendo exibido.");
+            // Adicione aqui a lógica que você precisar ao abrir o modal
+        });
+
+        $('#meuModal').on('hide.bs.modal', function (e) {
+            console.log("O modal está sendo fechado.");
+            // Adicione aqui a lógica que você precisar ao fechar o modal
+        });
+    });
+
+</script>

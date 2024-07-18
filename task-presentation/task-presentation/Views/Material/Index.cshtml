@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Materiais</h2>
+
+<ul>
+    <li><button onclick="window.location.href='@Url.Action("CarregarListaFundo", "Material")'">Fundo</button></li>
+    <li><button onclick="window.location.href='@Url.Action("CarregarListaMoldura", "Material")'">Moldura</button></li>
+    <li><button onclick="window.location.href='@Url.Action("CarregarListaImpressao", "Material")'">Impressão</button></li>
+    <li><button onclick="window.location.href='@Url.Action("CarregarListaVidro", "Material")'">Vidro</button></li>
+</ul>
